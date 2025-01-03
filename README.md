@@ -41,7 +41,7 @@ https://hackhub-mzj8.onrender.com/hackathon
 
 Clone this repository to your local machine:  
 ```bash
-git clone https://github.com/GDGOnCampusMGMsCOE/HackHub.git
+git clone https://github.com/rasikarakhewar3010/HackHub.git
 ```
 
 ### Step 2: Navigate to the Project Directory
