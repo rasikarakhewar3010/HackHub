@@ -59,13 +59,6 @@ npm install
 
 ### Step 4: Set Up the Database
 Create a new MongoDB database.
-Update the database credentials in the .env file:
-     ```env
-     DB_HOST=localhost
-     DB_USER=root
-     DB_PASSWORD=yourpassword
-     DB_NAME=hackhub
-     ```
      
 ### Step 5: Run the Application
 
