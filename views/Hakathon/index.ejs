@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackHub</title>
+    <link rel="icon" href="/2.png">
+
+    <!-- cdn of bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <!-- bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/faq.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+
+    <div id="particles-js">  </div>
+    <%- include("../includes/navbar.ejs") %>
+  </header>
+  <main>
+    <%- include("../includes/flash.ejs") %>
+    <section class="section1" id="section1">
+      
+      <div class="content container">
+        <div class="info">
+          
+          <h1>HackHub</h1>
+          <div class="subtital">
+            <h3>
+              Learn <br>
+              Explore <br>
+              Upskill
+            </h3>
+          </div>
+          
+          <div class="ex-info">
+            <p>
+              HackHub is the largest and fastest-growing community of technology innovators, including startups, working professionals, freelancers, and student innovators.
+            </p>
+          </div>
+          <div class="explor">
+            <a href="/hackathon/listing"><button id="btn-1">Explor Hackethon</button></a>
+            <a href="/hackathon/new"><button id="btn-2">Organize Hackethon</button></a>
+          </div>
+        </div>
+        <div class="img">
+         
+          <img src="/hero-main-char.svg" alt="">
+        </div>
+        
+      </div>
+
+    </section>
+    
+    <section class="sextion2">
+      <div class="explor-current-hack ">
+        <div class="hack-cards container">
+          <div class="upskill">
+            <div class="img-2">
+              <img src="/download.png" alt="">
+            </div>
+            <div class="head-2 af-img">
+              <h2>Upskill with HackHub </h2>
+              <a href="#explorHackThon"><button id="btn-1">Start Your journy now</button></a>
+            </div>
+            </div>
+          </div>
+
+          
+          <section class="minisection2" id="explorHackThon">
+            <div class="head-2">
+              <h2 id="forhv">Featured Innovation Challenges and Hackathons </h2>
+            </div>
+            <section class="cards-section">
+              <div class="slider-container">
+                <button class="prev-btn">◀</button>
+                <div class="cards-comb">
+                  <div class="cards-wrapper">
+                    <% for (let listing of allListings) { %>
+                      <a href="/hackathon/<%= listing._id %>" class="listing-link">
+                        <div class="cards">
+                          <img src="<%= listing.image.url %>" alt="listing image">
+                          <div class="card-info">
+                            <h3><%= listing.name %></h3>
+                            <p>
+                              <%= listing.description.length > 100
+                                ? listing.description.slice(0, 80) + "..."
+                                : listing.description %>
+                            </p>
+                            <p>
+                              <i class="bi bi-calendar3"></i>
+                              <%= listing.date.toString().split(" ").slice(0, 4).join("-") %>
+                            </p>
+                          </div>
+                          <div id="reg-now-btn">
+                            <button id="btn-1">Register Now</button>
+                          </div>
+                        </div>
+                      </a>
+                    <% } %>
+                  </div>
+                </div>
+                <button class="next-btn">▶</button>
+              </div>
+            </section>            
+
+          </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section3 ">
+      <div class="faq container" id="faq">
+        <h2>FAQ</h2>
+         <div class="faq-1 accordion">
+          <div class="accordion-item">
+            <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">What is a Hackathon?</span><span class="icon" aria-hidden="true"></span></button>
+            <div class="accordion-content">
+               <p>A Hackathon is a social coding event that involves enthusiastic
+                developers and other inquisitive people to improvise or build
+                new and creative projects/programs.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title">What are the different types of Hackathon?</span><span class="icon" aria-hidden="true"></span></button>
+            <div class="accordion-content">
+              <p>here are various categories of Hackathons like: <br>
+                Internal Hackathon, External Hackathons, online/offline
+                Hackathons, Cause-specific/industry-specific Hackathons,
+                application/language-based Hackathons, etc.</p>
+            </div>
+          </div>
+         <div class="accordion-item">
+            <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title">How to participate in the Hackathon as a beginner?</span><span class="icon" aria-hidden="true"></span></button>
+            <div class="accordion-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+            </div>
+         </div>
+
+          <div class="accordion-item">
+              <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title">How much does the Earth weigh?</span><span class="icon" aria-hidden="true"></span></button>
+              <div class="accordion-content">
+                <!-- here is a a thg give link here -->
+                <p>Well, everyone is a beginner once in his/her life. But the journey from being a beginner and then a pro is fascinating, creative, mind-storming and something you will love to experience. Check our complete guide on how to <a href="/hackathon/listing">participate in hackethon as bigginer</a></p>
+              </div>
+         </div>
+
+          <div class="accordion-item">
+            <button id="accordion-button-5" aria-expanded="false"><span class="accordion-title">What do you do in a Hackathon?   </span><span class="icon" aria-hidden="true"></span></button>
+            <div class="accordion-content">
+              <p>The purpose is to design, construct and demonstrate the most innovative solution to a given problem, and then pitch your final idea, prototype, or presentation to the expert panel.
+              </p>
+            </div>
+           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hacethinGude">
+      <div class="info-guid">
+        <div class="info-guid-head">
+          <h2 class="head-2">Guid For Hackethons</h2>
+          <a href="/hackathon/hackGuide">
+            <button id="btn-1">
+              Let's Start
+            </button>
+          </a>
+        </div>
+        <div class="guid-img">
+          <img src="/guid-img-2.png" alt="">
+        </div>
+      </div>
+      <div class="layer1 spacer">
+        
+      </div>
+    </section>
+
+
+  </main>
+
+  <footer >
+    <div class="fullfooter">
+      <div class="footer">
+        <div class="hackethons fd-content">
+          <h4>
+            Hackethons
+          </h4>
+  
+          <ul>
+            <li><a href="/hackathon/new">Organize Hackethon</a></li>
+            <li><a href="#explorHackThon">Participate in Hackethon</a></li>
+            <li><a href="/hackathon/hackGuide">Guidance for Hackethon</a></li>
+            <li><a href="">College Hackethon</a></li>
+            <li><a href="">Corperate Hackethon</a></li>
+          </ul>
+        </div>
+  
+        <div class="quick-linkes fd-content">
+          <h4>
+            Quick Links
+          </h4>
+  
+          <ul>
+            <li><a href="#section1">Home</a></li>
+            <li><a href="#explorHackThon">Current Hackethons</a></li>
+            <li><a href="">Contact us</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+  
+        </div>
+  
+        <div class="coonect-us fd-content">
+          <h4>
+            Contact Us
+          </h4>
+  
+          <ul>
+            <li><a href="https://www.linkedin.com/in/rasika-rakhewar/"><i class="bi bi-linkedin"></i>&nbsp;  Linked In</a></li>
+            <li><a href="https://github.com/rasikarakhewar3010"><i class="bi bi-github"></i> &nbsp;Github</a></li>
+            <li><a href="https://www.instagram.com/rasika_rakhewar?igsh=cGM5MWVzem53YXNl"><i class="bi bi-instagram"></i>&nbsp;  Instagram</a></li>
+            <li><a href="https://x.com/Rasika_Rakhewar?t=-9Qc7dcbDuM5z3V5iN0Diw&s=08"><i class="bi bi-twitter-x"></i> &nbsp;X</a></li>
+          </ul>
+        </div>
+  
+        <div class="fd-logo">
+        </div>
+        
+      </div>
+      <div id="horixontal-line"></div>
+      <div class="copyrite">
+        <p>2024  &copy; All rights reserved by HackHub</p>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <!-- gsap cdn  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  <!-- bootstrap cdn -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <!-- Include Three.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- js with gsap -->
+  <script src="/gsap.js"></script>
+  <!-- main js -->
+  <script src="/index.js"></script>
+  <!-- swipe cards js -->
+  <script src="/swipeCards.js"></script>
+
+  
+    
+</body>
+</html>

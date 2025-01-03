@@ -1,0 +1,247 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+    #share-icon {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+#share-icon:hover {
+    transform: scale(1.1);
+}
+
+</style>
+<div class="container mt-4 show-parent-box md-6">
+    <section class="show-section-1">
+        <div class="show-img" style="background-image: url('<%= listing.image.url %>');"></div>
+
+    
+        <div class="second-box">
+            <div class="left-box">
+                <h3> <%= listing.name %></h3>
+                <h5>Owned by: <i><%= listing.owner.username %></i></h5>
+                <h5 id="eventDate">                    
+                    <i class="bi bi-calendar3"></i>
+                    <span id="maxParticipants">Evnet Date: <%= listing.date.toString().split(" ").slice(0, 4).join("-") %></span></h5>
+                <div class="prize-container text-center my-4">
+                    <div class="prize-badge">
+                        <h2 class="prize-amount">                    
+                            &#8377; <%= Number(listing.prize).toLocaleString("en-IN") %>
+                        </h2>
+                        <p class="prize-text">Grand Prize</p>
+                    </div>
+                </div>
+                <div class="mini-box">
+                    <i class="bi bi-people-fill"></i> 
+                    <span id="maxParticipants">Maximum participant: <%= listing.maxParticipants %> </span>
+                </div>
+                &nbsp; &nbsp; 
+                <div class="mini-box">
+                    <i class="bi bi-alarm-fill"></i>
+                    <span id="maxParticipants">Duration of Hackathon: <%= listing.duration %>hr</span>
+                </div>
+                &nbsp; &nbsp;
+                <div class="mini-box"  id="share-icon">
+                    <i class="bi bi-share-fill"></i>
+                </div>
+                
+                
+            </div>
+            <div class="right-box">
+                
+                <% if (listing.currentParticipants < listing.maxParticipants) { %>
+                    <form action="/hackathon/<%=listing._id%>/participate" method="get">
+                        <button id="btn-1" class="register-btn">Register Now</button>
+                    </form>                
+                    <% } else { %>
+                    <button id="register-btn" class="register-btn disabled" disabled>
+                        Registration Closed
+                    </button>
+                <% } %>
+            
+                <br>
+                <p id="at-center-p"> <span class="warning">⚠️ Registration Closing On:</span> <br>
+                <span class="closing-date "> <%= listing.registrationDate.toString().split(" ").slice(0, 4).join("-") %></span></p>                
+                <div class="countdown">
+                    <div class="time-container">
+                        <div class="time-box">
+                            <span id="days">00</span>
+                        </div>
+                        <p class="time-label">DAYS</p>
+                    </div>
+                
+                    <span class="colon">:</span>
+                
+                    <div class="time-container">
+                        <div class="time-box">
+                            <span id="hours">00</span>
+                        </div>
+                        <p class="time-label">HOURS</p>
+                    </div>
+                
+                    <span class="colon">:</span>
+                
+                    <div class="time-container">
+                        <div class="time-box">
+                            <span id="minutes">00</span>
+                        </div>
+                        <p class="time-label">MINUTES</p>
+                    </div>
+                
+                    <span class="colon">:</span>
+                
+                    <div class="time-container">
+                        <div class="time-box">
+                            <span id="seconds">00</span>
+                        </div>
+                        <p class="time-label">SECONDS</p>
+                    </div>
+                </div>
+                <!-- remaining slots  -->
+                <div class="text-center mt-1">
+                    <p class="fs-5 fw-bold <%= listing.currentParticipants < listing.maxParticipants ? 'text-success' : 'text-danger' %>">
+                        <%= listing.currentParticipants < listing.maxParticipants
+                            ? `Slots Remaining: ${listing.maxParticipants - listing.currentParticipants}`
+                            : "Registration Closed: Maximum participants reached!" %>
+                    </p>
+                </div>
+                
+                     
+            </div>
+        </div>
+    </section>
+    <hr>
+    <div class="description-container">
+        <h5 class="description-title">About This Hackathon</h5>
+        <p class="description-text" id="not-center-p">
+            <%= listing.description %>
+        </p>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="theme-container">
+        <h5 class="theme-title">Theme of the Hackathon</h5>
+        <p class="theme-text" id="not-center-p">
+            <%= listing.theme %>
+        </p>
+    </div>
+    <br>
+    <div class="box-3">
+        <% if(currentUser && currentUser._id.equals(listing.owner._id)){ %>
+            <div class="show-btns-box mb-3">        
+                <form method="POST" action="/hackathon/<%=listing._id%>?_method=DELETE">
+                    <button class="btn btn-dark  btn-lg " id="btn-1">DELETE</button>
+                </form>
+                <a href="javascript:void(0)" id="participants-btn" class="btn btn-primary btn-lg participate-btn" id="btn-2">PARTICIPENTS</a>
+            </div>
+        <% } %>
+    </div>
+    <br><br>
+
+    <div id="participant-box" style="display: none;">
+        <div class="text-center mt-4">
+            <h5 class="fw-bold ">Total Participants: <%= listing.currentParticipants %></h5>
+        </div>
+        
+        <p><b>All Participants</b></p>
+        
+        <div class="row">
+            <% for (let participate of participates) { %>
+                <div class="card col-5 ms-3 mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title ">
+                            User name:
+                            @<%= participate.participant && participate.participant.username 
+                                ? participate.participant.username 
+                                : "Unknown Participant" %>
+                        </h5>
+                        <p class="starability-result card-text" >
+                            <b>Name:  </b><%= participate.pname %>
+                        </p>
+                        <p class="card-text"><b>Email:</b> <%= participate.pemail %></p>
+                        <p class="card-text"> <b>Contact no.: </b><%= participate.contact %></p>
+                        <p class="card-text"> <b>Gender:</b> <%= participate.gender %></p>
+                        <p class="card-text"> <b>Branch: </b><%= participate.branch %></p>
+                        <p class="card-text"> <b>Year of Graduation: </b><%= participate.yearGraduate %></p>
+                        <p class="card-text"><b>LinkedIn Profile: </b> <a href="<%= participate.linkedin %>" target="_blank"><%= participate.linkedin %></a></p>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+    
+    
+
+</div>
+
+
+
+<script>
+// Pass the date from EJS into JavaScript
+const targetDate = new Date("<%= listing.registrationDate %>").getTime();
+const registerButton = document.getElementById("register-btn");
+
+function updateTimer() {
+    const now = new Date().getTime();
+    const timeRemaining = targetDate - now;
+
+    if (timeRemaining > 0) {
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+        // Update the countdown display with padding for consistent format
+        document.getElementById("days").textContent = days.toString().padStart(2, '0');
+        document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+        document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+        document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+    } else {
+        // Display "Registration Closed!" message
+        document.querySelector(".countdown").innerHTML = "<span>Registration Closed!</span>";
+        
+        // Disable the Register button
+        registerButton.disabled = true;
+        registerButton.classList.add("disabled");
+        registerButton.textContent = "Registration Closed";
+    }
+}
+
+// Update the timer every second
+setInterval(updateTimer, 1000);
+updateTimer();  // Initial call to display the countdown immediately
+
+
+// Get the PARTICIPENTS button and participant-box div
+const participantsBtn = document.getElementById("participants-btn");
+    const participantBox = document.getElementById("participant-box");
+
+    // Add a click event listener to the button
+    participantsBtn.addEventListener("click", () => {
+        // Toggle the display property of the participant-box
+        if (participantBox.style.display === "none") {
+            participantBox.style.display = "block"; // Show the participant box
+            participantsBtn.textContent = "Hide Participants"; // Change button text
+        } else {
+            participantBox.style.display = "none"; // Hide the participant box
+            participantsBtn.textContent = "PARTICIPENTS"; // Restore button text
+        }
+    });
+
+
+    //for share btn 
+    document.getElementById('share-icon').addEventListener('click', function() {
+    // Get the current page URL
+    const pageUrl = window.location.href;
+
+    // Copy the URL to the clipboard
+    navigator.clipboard.writeText(pageUrl).then(() => {
+        alert('URL copied to clipboard!');
+    }).catch(err => {
+        console.error('Failed to copy URL: ', err);
+    });
+});
+
+
+</script>
+

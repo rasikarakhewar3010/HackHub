@@ -1,0 +1,109 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5 mb-5">
+    <!-- Hackathon Banner -->
+    <div class="show-img" style="background-image: url('<%= listing.image.url %>');"></div>
+
+
+    <hr>
+
+    <!-- Participation Form Card -->
+        <div class="card-header  text-white text-center">
+            <h2>Registration for <%= listing.name %></h2>
+        </div>
+        <form id="participateForm" method="POST" action="/hackathon/<%= listing._id %>/participate" novalidate class="needs-validation">
+            <div class="row g-3 mb-5">
+                <!-- Name -->
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="pname" name="participate[pname]" placeholder="Enter your name" required minlength="2" maxlength="100">
+                    <div class="form-text text-white">Name must be 2-100 characters long.</div>
+                </div>
+        
+                <!-- Email -->
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="participate[pemail]" placeholder="Enter your email" required>
+                    <div class="form-text text-white">Enter a valid email address.</div>
+                </div>
+        
+                <!-- Contact Number -->
+                <div class="col-md-6">
+                    <label for="contact" class="form-label">Contact Number</label>
+                    <input type="text" class="form-control" id="contact" name="participate[contact]" placeholder="Enter 10-digit contact number" required pattern="^[0-9]{10}$">
+                    <div class="form-text text-white">Contact must be a valid 10-digit number.</div>
+                </div>
+        
+                <!-- Gender -->
+                <div class="col-md-6">
+                    <label for="gender" class="form-label">Gender</label>
+                    <select class="form-select" id="gender" name="participate[gender]" required>
+                        <option value="" disabled selected>Select your gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+        
+                <!-- Branch -->
+                <div class="col-md-6">
+                    <label for="branch" class="form-label">Branch</label>
+                    <input type="text" class="form-control" id="branch" name="participate[branch]" placeholder="Enter your branch" required minlength="2" maxlength="100">
+                    <div class="form-text text-white">Branch must be 2-100 characters long.</div>
+                </div>
+        
+                <!-- Year of Graduation -->
+                <div class="col-md-6">
+                    <label for="yearGraduate" class="form-label">Year of Graduation</label>
+                    <input type="number" class="form-control" id="yearGraduate" name="participate[yearGraduate]" placeholder="Enter your graduation year" required min="1900" >
+                    <div class="form-text text-white">Year must be between 1900.</div>
+                </div>
+        
+                <!-- LinkedIn Profile -->
+                <div class="col-md-12">
+                    <label for="linkedin" class="form-label">LinkedIn Profile (Optional)</label>
+                    <input type="url" class="form-control" id="linkedin" name="participate[linkedin]" placeholder="Enter your LinkedIn URL">
+                    <div class="form-text text-white">Enter a valid LinkedIn profile URL.</div>
+                </div>
+        
+                <!-- Submit Button -->
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-lg w-100">Submit</button>
+                </div>
+            </div>
+        </form>
+        
+                    </div>
+                </div>
+
+                <!-- Submit Button
+                <div class="row">
+                    <div class="text-center mt-4 col-md-12">
+                        <button type="submit" class="btn btn-primary btn-lg px-5">Submit</button>
+                    </div>
+                </div> -->
+                
+            </form>
+
+</div>
+
+
+
+
+<!-- Bootstrap validation script -->
+<script>
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation');
+
+    // Loop over them and prevent submission if not valid
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+</script>

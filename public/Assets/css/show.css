@@ -1,0 +1,218 @@
+
+.show-section-1{
+    height: 100vh;
+}
+
+.show-img {
+    width: 100%;                /* Full width of the parent container */
+    height: 24rem;              /* Fixed height for a consistent display */
+    background-size: cover;     /* Ensures the image covers the div proportionally */
+    background-position: center; /* Centers the image within the div */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    border-radius: 10px;        /* Optional: Adds rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a soft shadow for a polished look */
+    overflow: hidden;           /* Ensures any child elements don't overflow the container */
+    transition: transform 0.3s ease; /* Smooth zoom-in effect on hover */
+}
+
+.show-img:hover {
+    transform: scale(1.05);    /* Slightly enlarges the image on hover for an interactive effect */
+}
+
+
+.second-box{
+    margin-top: 20px;
+    display: flex;
+
+    justify-content: space-between;
+}
+.left-box{
+    flex-grow: 2;
+}
+.mini-box{
+    padding: 5px 20px;
+    border: 2px solid rgb(8, 8, 8);
+    border-radius: 25px;
+    display: inline;
+    gap: 30px;
+    font-weight: 500;
+}
+
+.prize-container {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    /* padding: 20px; */
+}
+
+.prize-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff8a00, #e52e71); /* Gradient background */
+    color: #fff; /* White text for contrast */
+    padding: 20px 30px;
+    border-radius: 20px; /* Rounded edges for a badge-like look */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    text-align: center; /* Center align text */
+    transition: transform 0.3s ease; /* Hover animation */
+}
+
+.prize-badge:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.prize-amount {
+    font-size: 2.5rem; /* Large text for the prize amount */
+    font-weight: bold; /* Emphasize the amount */
+    margin: 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Add text shadow */
+}
+
+.prize-text {
+    font-size: 1rem; /* Smaller text for context */
+    font-weight: 500; /* Semi-bold text */
+    margin-top: 5px;
+    letter-spacing: 1px;
+    text-transform: uppercase; /* Make it more formal */
+    opacity: 0.9;
+}
+
+.right-box{
+    flex-grow: 1; 
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#eventDate span{
+    color: aliceblue;
+}
+.register-btn{
+    border: 4px inset aliceblue;
+    padding: 10px 15px;
+    margin: 10px 30px;
+    width: 19rem;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    font-weight: 600;
+    transition: transform 0.3s ease; /* Hover animation */
+
+}
+
+.register-btn:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 2px 20px rgba(210, 208, 208, 0.352);
+}
+
+.date-reg{
+    text-align: center;
+    font-weight: 700;
+    font-size: 1rem;
+}
+.timer-container {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: red;
+    margin-top: 20px;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Space between boxes */
+}
+
+.time-container {
+    display: flex;
+    flex-direction: column; /* Stack time-box and label vertically */
+    align-items: center; /* Center-align both the box and label */
+}
+#at-center-p{
+    text-align: center;
+}
+.time-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: 2px solid red;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+}
+
+.time-label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 5px; /* Add spacing between the box and label */
+    color: white;
+}
+.warning{
+    font-size: 0.8rem;
+    color: red;
+    text-align: center;
+}
+
+.closing-date{
+    font-size: 1rem;
+    color: red;
+    text-align: center;
+}
+
+.colon {
+    font-size: 24px;
+    font-weight: bold;
+    color: red;
+    margin: 0 5px; /* Adjust spacing around the colon */
+}
+
+
+#maxParticipants{
+    font-size: 1.2rem;
+    color: #bcbcbccf;
+}
+
+#not-center-p{
+    text-align: start;
+    color: rgba(249, 251, 253, 0.905);
+}
+
+h5{
+    text-decoration: underline 2px #fff;
+}
+
+#share-btn{
+    padding: 10px;
+    display: inline;
+    border-radius: 50%;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+}
+
+#share-btn:hover {
+    box-shadow: 0 2px 15px rgba(255, 255, 255, 0.6);
+    transform: scale(1.05);
+}
+
+.show-btns-box{
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 20rem;
+}
+
+.participate-btn{
+    background-color: aliceblue;
+    color: #05445e;
+
+}

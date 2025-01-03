@@ -1,0 +1,27 @@
+<% layout("/layouts/boilerplate") %>
+
+<h3 class="mt-4 text-center ">All Hackathons</h3>
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 g-4 mt-4">
+    <% for(let listing of allListings){ %>
+        <div class="col mb-3">
+            <a href="/hackathon/<%= listing._id %>" class="card h-100 shadow-sm text-decoration-none">
+                <img src="<%= listing.image.url %>" class="card-img-top rounded" alt="Hackathon Image" style="height: 17rem;">
+                <div class="card-body">
+                    <h5 class="card-title text-dark"><%= listing.name %></h5>
+                    <p class="card-text text-muted small">
+                        <%= listing.description.length > 100 
+                            ? listing.description.slice(0, 100) + "..." 
+                            : listing.description %>
+                    </p>
+                    <p class="card-text text-secondary small">
+                        <i class="bi bi-calendar3"></i> <%= listing.date.toString().split(" ").slice(0, 4).join("-") %>
+                    </p>
+                </div>
+                <div class="card-footer bg-white border-0 text-end">
+                    <span class="btn btn-outline-primary btn-sm">View Details</span>
+                </div>
+            </a>
+        </div>
+    <% } %>
+</div>
