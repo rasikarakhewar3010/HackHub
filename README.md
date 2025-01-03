@@ -31,8 +31,7 @@ HackHub is a comprehensive platform designed to streamline the organization and 
 You can access the live version of HackHub at the following URL:  
 [Note: If you are opening this link on a mobile device, please enable desktop mode in your browser for the best experience.]
 ```bash
-[npx nodemon app.js
-](https://hackhub-mzj8.onrender.com/hackathon)
+https://hackhub-mzj8.onrender.com/hackathon
 ```
 
 
